@@ -159,8 +159,6 @@ ForgeFlowTests/
 | Document | Contents |
 |---|---|
 | `../docs/design.md` | Architecture, state machines, pipelines, security model (threat matrix, role trust levels) |
-| `../docs/architecture.md` | Layer diagram, service responsibilities, schema map |
-| `../docs/requirements-traceability.md` | Requirement codes (ATT-*, AUTH-*, MSG-*, SYNC-*, BG-*) mapped to implementation and tests |
 | `../docs/api-spec.md` | HTTP/service API surface, request/response contracts, error codes |
 
 Design decisions and data contracts are also documented inline via `MARK:` sections and comments throughout the source.
