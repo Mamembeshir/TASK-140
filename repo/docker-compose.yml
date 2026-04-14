@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  forgeflow:
+    build: .
+    container_name: forgeflow
+    # ForgeFlow is a native iOS app with no server component.
+    # This service exists for CI pipeline compatibility.
+    # It builds and exits successfully.

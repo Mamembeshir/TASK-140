@@ -1,0 +1,7 @@
+* text=auto eol=lf
+*.swift text diff=swift
+*.pbxproj binary merge=union
+*.png binary
+*.jpg binary
+*.pdf binary
+*.sqlite binary
