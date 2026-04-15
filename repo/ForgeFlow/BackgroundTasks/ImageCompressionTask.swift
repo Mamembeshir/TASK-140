@@ -116,8 +116,7 @@ enum ImageCompressionTask {
                         job.inputURL,
                         withItemAt: job.outputURL,
                         backupItemName: nil,
-                        options: [],
-                        resultingItemURL: nil
+                        options: []
                     )
                 }
                 // Never remove inputURL when source == output: the atomic write

@@ -1,16 +1,16 @@
 import SwiftUI
 
-/// Detects user interaction (taps, drags) and refreshes the inactivity timer.
+/// Refreshes the inactivity timer on keyboard activity and scene activation.
+/// Navigation-safe: does NOT use any gesture recognizer that could interfere
+/// with NavigationLink, Button, or ScrollView touches.
 struct InteractionTrackingModifier: ViewModifier {
     let appState: AppState
 
     func body(content: Content) -> some View {
         content
-            .simultaneousGesture(
-                DragGesture(minimumDistance: 0)
-                    .onChanged { _ in appState.recordInteraction() }
-            )
-            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification)) { _ in
+            .onReceive(NotificationCenter.default.publisher(
+                for: UIResponder.keyboardDidShowNotification
+            )) { _ in
                 appState.recordInteraction()
             }
     }
