@@ -48,6 +48,6 @@ final class DependencyRepository: Sendable {
     }
 
     func deleteInTransaction(db: Database, _ id: UUID) throws {
-        try db.execute(sql: "DELETE FROM dependencies WHERE id = ?", arguments: [id.uuidString])
+        try db.execute(sql: "DELETE FROM dependencies WHERE id = ?", arguments: [id])
     }
 }

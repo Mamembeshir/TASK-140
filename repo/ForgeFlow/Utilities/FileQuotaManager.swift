@@ -4,13 +4,14 @@ import GRDB
 enum FileQuotaManager {
     /// Returns (usedBytes, quotaBytes) for a user.
     static func getUsage(userId: UUID, dbPool: DatabasePool) async throws -> (used: Int, quota: Int) {
+        // Pass UUID directly so GRDB encodes it as a 16-byte BLOB, matching the stored format.
         let used = try await dbPool.read { db in
             let sql = "SELECT COALESCE(SUM(fileSizeBytes), 0) FROM attachments WHERE uploadedBy = ?"
-            return try Int.fetchOne(db, sql: sql, arguments: [userId.uuidString]) ?? 0
+            return try Int.fetchOne(db, sql: sql, arguments: [userId]) ?? 0
         }
         let quota = try await dbPool.read { db in
             let sql = "SELECT storageQuotaBytes FROM users WHERE id = ?"
-            return try Int.fetchOne(db, sql: sql, arguments: [userId.uuidString]) ?? 2_147_483_648
+            return try Int.fetchOne(db, sql: sql, arguments: [userId]) ?? 2_147_483_648
         }
         return (used: used, quota: quota)
     }

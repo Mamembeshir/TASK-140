@@ -50,7 +50,7 @@ final class CommentService: Sendable {
         body: String,
         parentCommentId: UUID? = nil
     ) async throws -> Comment {
-        guard !body.trimmingCharacters(in: .whitespaces).isEmpty else {
+        guard !body.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
             throw PostingError.titleRequired
         }
 
