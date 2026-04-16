@@ -95,7 +95,7 @@ xcodebuild test \
 
 ### What to Expect
 
-- **141 tests** across 22 suites
+- **392 tests** across 54 suites
 - Unit, integration, and view test layers
 - Auth integration tests may show `saveFailed(status: -34018)` — this is a known iOS Simulator Keychain limitation when running outside Xcode's managed signing. The app itself works around this with a UserDefaults fallback in debug builds.
 
